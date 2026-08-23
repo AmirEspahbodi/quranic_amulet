@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+<fontconfig>
+  <dir>/Users/mh/qp/.work/fonts</dir>
+  <dir>/System/Library/Fonts</dir>
+  <dir>/System/Library/Fonts/Supplemental</dir>
+  <dir>/Library/Fonts</dir>
+  <cachedir>/Users/mh/qp/.work/fontconfig-cache</cachedir>
+</fontconfig>
