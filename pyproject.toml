@@ -1,34 +1,22 @@
-[build-system]
-requires = ["setuptools>=68.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "KFGQPC"
-version = "1.0.0"
-description = "KFGQPC Hafs Uthmanic Quran DOCX transformation pipeline"
-requires-python = ">=3.10"
+name = "quranic_amilet"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "a.espahbodi",email = "dev.amir.espahbodi@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.14"
 dependencies = [
-    "python-docx>=1.1.0",
-    "lxml>=5.0.0",
-    "regex>=2024.4.16",
-    "typer>=0.12.0",
-    "rich>=13.0.0",
-    "pillow (>=12.3.0,<13.0.0)",
+    "typer (>=0.27.1,<0.28.0)",
+    "rich (>=15.0.0,<16.0.0)",
+    "python-docx (>=1.2.0,<2.0.0)",
+    "weasyprint (>=69.0,<70.0)"
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=8.0.0",
-    "pytest-cov>=5.0.0",
-    "hypothesis>=6.100.0",
-]
+[tool.poetry]
+packages = [{include = "*", from = "src"}]
 
-[project.scripts]
-quran-filter = "quran_docx_filter.cli:app"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-v --tb=short"
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

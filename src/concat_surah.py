@@ -23,7 +23,7 @@ from docx.text.run import Run
 
 # ----------------------------- تنظیمات -----------------------------
 
-SOURCE_DIR = Path(r"Quran_Surahs_herz")
+SOURCE_DIR = Path(r"Tanzil_Quran_Surahs_herz")
 OUTPUT_FILE = Path(r"holly_quran.docx")
 EXTENSIONS = {".docx", ".doc"}
 PERIOD = "."
