@@ -28,9 +28,9 @@ PAGE_PRESETS = {
     "A3": {"margin": "10mm", "line_spacing": 1.5},
 }
 
-FONT_FAMILY = "KFGQPC HAFS Uthmanic Script"
+FONT_FAMILY = "KFGQPC Uthmanic Script HAFS"
 NUM_COLUMNS = 1
-FONT_FILE_PATH = BASE_DIR.parent / "fonts" / "KfgqpcHafsUthmanicScriptRegular-1jGEe.ttf"
+FONT_FILE_PATH = BASE_DIR.parent / "fonts" / "KFGQPC Uthmanic Script HAFS Regular.otf"
 # =====================================================================
 
 
@@ -184,10 +184,12 @@ def main():
 
     # Dynamic configuration based on selected page_size
     page_size = args.page_size
+
     margin = PAGE_PRESETS[page_size]["margin"]
     LINE_SPACING = PAGE_PRESETS[page_size]["line_spacing"]
     low = args.low
     high = args.high
+    global OUTPUT_PDF_PATH
     OUTPUT_PDF_PATH = f"holly_quran_{page_size}.pdf"
     try:
         print(f"Loading document: '{INPUT_DOCX_PATH}'...")

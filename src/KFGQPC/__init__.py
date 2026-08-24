@@ -2,6 +2,5 @@
 
 __version__ = "1.0.0"
 
-TARGET_FONT = "KFGQPC HAFS Uthmanic Script"
-SOURCE_SYMBOL_FONT = "KFGQPC Arabic Symbols 01"
-
+TARGET_FONT = "KFGQPC Uthmanic Script HAFS"
+SOURCE_SYMBOL_FONT = "KFGQPC HAFS Uthmanic Script"
