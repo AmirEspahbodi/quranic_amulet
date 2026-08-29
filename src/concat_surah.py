@@ -4,6 +4,7 @@
 
 - فایل‌ها بر اساس عدد ابتدای نام فایل مرتب می‌شوند.
 - متن هر فایل استخراج و با یک جداکننده ادغام می‌شود.
+- شماره منازل ۷ گانه قرآن با کاراکترهای عربی پیش از سوره‌های مربوطه درج می‌شود.
 - فونت 'KFGQPC HAFS Uthmanic Script' در تمام لایه‌های OpenXML (DocDefaults، Styles و Runs)
   برای سازگاری کامل با Microsoft Word 2024 اعمال می‌شود.
 """
@@ -23,17 +24,28 @@ from docx.text.run import Run
 
 # ----------------------------- تنظیمات -----------------------------
 
-SOURCE_DIR = Path(r"Tanzil_Quran_Surahs_herz")
+SOURCE_DIR = Path(r"surahs") # آدرس پوشه را طبق لاگ شما تصحیح کردم
 OUTPUT_FILE = Path(r"holly_quran.docx")
 EXTENSIONS = {".docx", ".doc"}
 PERIOD = "."
-ADD_SPACE_AFTER_PERIOD = True
 EXPECTED_COUNT = 114
 
 # نام فونت اختصاصی مصحف
 TARGET_FONT = "KFGQPC HAFS Uthmanic Script"
 # کد زبان عربی برای جلوگیری از خطایابی نامناسب در Word 2024
 LOCALE_ARABIC = "ar-SA"
+
+# دیکشنری نگاشت نقطه شروع منازل قرآن به اعداد عربی جهت پشتیبانی در فونت عثمان طه
+# اعداد یونیکد عربی در فونت KFGQPC دقیقاً با استایل قرآن رندر می‌شوند
+MANZIL_STARTS = {
+    1: "١",   # منزل اول: الفاتحه تا النساء
+    5: "٢",   # منزل دوم: المائده تا التوبه
+    10: "٣",  # منزل سوم: یونس تا النحل
+    17: "٤",  # منزل چهارم: الاسراء تا الفرقان
+    26: "٥",  # منزل پنجم: الشعراء تا یس
+    37: "٦",  # منزل ششم: الصافات تا الحجرات
+    50: "٧"   # منزل هفتم: ق تا الناس
+}
 
 # ------------------------------------------------------------------
 
@@ -343,13 +355,25 @@ def main():
             print(f"هشدار: فایل {path.name} خالی یا نامعتبر بود.")
             continue
 
-        merged_parts.append(text + PERIOD)
+        # اگر سوره، سوره ابتدای یک منزل است، ابتدا شماره عربی منزل را به لیست اضافه می‌کنیم
+        if num in MANZIL_STARTS:
+            merged_parts.append(MANZIL_STARTS[num])
+
+        # سپس متن سوره را اضافه می‌کنیم
+        merged_parts.append(text)
 
     if not merged_parts:
         raise ValueError("هیچ متنی برای درج در فایل نهایی تولید نشد.")
 
-    separator = " " if ADD_SPACE_AFTER_PERIOD else ""
+    # با این جداکننده، چه بین "شماره منزل و سوره" و چه بین "سوره و سوره"
+    # دقیقا الگو [space + dot + space] رعایت می‌شود.
+    separator = f" {PERIOD} "
+    
+    # متصل کردن تمامی عناصر داخل لیست با جداکننده
     final_text = separator.join(merged_parts)
+    
+    # مطابق خواسته شما در انتها: "سوره اخر باید یک فاصله و بعد نقطه داشته باشه"
+    final_text += f" {PERIOD}"
 
     # ایجاد سند نهایی با اعمال سخت‌گیرانه تایپوگرافی
     final_doc = Document()
