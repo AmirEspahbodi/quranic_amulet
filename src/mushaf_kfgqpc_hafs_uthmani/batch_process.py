@@ -24,7 +24,7 @@ from pathlib import Path
 # imported as part of a package. Adjust PACKAGE_NAME / PACKAGE_PARENT if
 # your project layout is different.
 # ---------------------------------------------------------------------------
-PACKAGE_NAME = "src.KFGQPC"                      # <-- change if needed
+PACKAGE_NAME = "src.mushaf_kfgqpc_hafs_uthmani"                      # <-- change if needed
 PACKAGE_PARENT = Path(__file__).resolve().parent  # folder holding the package
 
 if str(PACKAGE_PARENT) not in sys.path:
