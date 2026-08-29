@@ -23,9 +23,9 @@ OUTPUT_PDF_PATH = None
 # CONFIGURABLE PARAMETERS & PAGE PRESETS
 # =====================================================================
 PAGE_PRESETS = {
-    "A1": {"margin": "10mm", "line_spacing": 2.1},
-    "A2": {"margin": "10mm", "line_spacing": 1.8},
-    "A3": {"margin": "10mm", "line_spacing": 1.5},
+    "A1": {"margin": "10mm", "line_spacing": 2.1}, # 800 ppi $ 800dpi
+    "A2": {"margin": "10mm", "line_spacing": 1.8}, # 1000 ppi $ 1000dpi
+    "A3": {"margin": "10mm", "line_spacing": 1.5}, # 1200 ppi $ 1200dpi
 }
 
 FONT_FAMILY = "KFGQPC Uthmanic Script HAFS"
